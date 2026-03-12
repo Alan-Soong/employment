@@ -8,10 +8,10 @@ Apple × GitHub 风格个人主页，基于纯 HTML / CSS / JS，无需构建工
 
 ## 替换头像
 
-照片文件已在 `tex/照片白.jpg`。在 `index.html` 中找到以下注释块，取消注释即可：
+照片文件已在 `tex/photo.jpg`。在 `index.html` 中找到以下注释块，取消注释即可：
 
 ```html
-<!-- <img src="tex/照片白.jpg" alt="宋卓伦" class="avatar-photo" /> -->
+<!-- <img src="tex/photo.jpg" alt="yourname" class="avatar-photo" /> -->
 ```
 
 同时删除紧跟的 `<div class="avatar-initials">SZL</div>` 行。
@@ -66,7 +66,7 @@ git push
 │   └── main.js         # 交互逻辑（主题切换 / 滚动动画等）
 ├── tex/
 │   ├── main.tex        # LaTeX 简历源文件
-│   └── 照片白.jpg       # 证件照（可替换到页面头像）
+│   └── photo.jpg       # 证件照（可替换到页面头像）
 └── README.md
 ```
 
