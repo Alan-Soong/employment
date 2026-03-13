@@ -138,4 +138,56 @@
 
     sections.forEach((sec) => sectionObserver.observe(sec));
   }
+
+  // Pet: subtle follow + head turn (monochrome)
+  const pet = $('#pet');
+  if (pet) {
+    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const head = pet.querySelector('.pet-head');
+
+    if (!reducedMotion && head) {
+      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
+      const lerp = (a, b, t) => a + (b - a) * t;
+
+      let pointerX = window.innerWidth * 0.5;
+      let pointerY = window.innerHeight * 0.5;
+      let curX = 0;
+      let curY = 0;
+      let curRot = 0;
+
+      window.addEventListener(
+        'pointermove',
+        (e) => {
+          pointerX = e.clientX;
+          pointerY = e.clientY;
+        },
+        { passive: true }
+      );
+
+      const tick = () => {
+        const r = pet.getBoundingClientRect();
+        const cx = r.left + r.width * 0.5;
+        const cy = r.top + r.height * 0.58;
+        const dx = pointerX - cx;
+        const dy = pointerY - cy;
+
+        // Follow (small nudge so content remains primary)
+        const targetX = clamp(dx / 18, -22, 22);
+        const targetY = clamp(dy / 18, -16, 16);
+        curX = lerp(curX, targetX, 0.12);
+        curY = lerp(curY, targetY, 0.12);
+        pet.style.setProperty('--pet-x', `${curX.toFixed(2)}px`);
+        pet.style.setProperty('--pet-y', `${curY.toFixed(2)}px`);
+
+        // Head turn (mainly horizontal)
+        const targetRot = clamp((dx / 180) * 16, -18, 18);
+        curRot = lerp(curRot, targetRot, 0.18);
+        head.style.setProperty('--pet-rot', `${curRot.toFixed(2)}deg`);
+
+        requestAnimationFrame(tick);
+      };
+
+      requestAnimationFrame(tick);
+    }
+  }
 })();
