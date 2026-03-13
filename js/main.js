@@ -2,6 +2,58 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
+  // Theme (manual override)
+  const themeToggle = $('#themeToggle');
+  const THEME_KEY = 'theme'; // 'light' | 'dark'
+  const getSystemTheme = () =>
+    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark'
+      : 'light';
+
+  const applyTheme = (theme) => {
+    const root = document.documentElement;
+    if (theme === 'dark' || theme === 'light') {
+      root.setAttribute('data-theme', theme);
+    } else {
+      root.removeAttribute('data-theme');
+    }
+  };
+
+  const setThemeToggleUI = (theme) => {
+    if (!themeToggle) return;
+    const icon = themeToggle.querySelector('span') || themeToggle;
+    const isDark = theme === 'dark';
+    icon.textContent = isDark ? '☀' : '☾';
+    themeToggle.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
+    themeToggle.title = isDark ? '切换到浅色' : '切换到深色';
+  };
+
+  const storedTheme = (() => {
+    try {
+      return localStorage.getItem(THEME_KEY);
+    } catch {
+      return null;
+    }
+  })();
+
+  const initialTheme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : getSystemTheme();
+  if (storedTheme === 'dark' || storedTheme === 'light') applyTheme(storedTheme);
+  setThemeToggleUI(initialTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || getSystemTheme();
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      try {
+        localStorage.setItem(THEME_KEY, next);
+      } catch {
+        // ignore
+      }
+      setThemeToggleUI(next);
+    });
+  }
+
   const progress = $('#progress');
   const toTop = $('#totop');
   const navLinks = $$('.nav a.navlink');
