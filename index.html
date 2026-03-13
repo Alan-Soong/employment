@@ -1,597 +1,365 @@
 <!DOCTYPE html>
-<html lang="zh-CN" data-theme="light">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>宋卓伦 · Alan Soong</title>
-  <meta name="description" content="宋卓伦 — 南开大学计算机科学与技术学生，专注于计算机视觉、机器学习与 AI Infra。" />
+  <title>宋卓伦 · 个人主页</title>
+  <meta name="description" content="宋卓伦 — 个人主页（Apple 风格、黑白极简），包含教育背景、技能、科研经历与联系方式。" />
 
-  <!-- Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome 6 -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
-  <!-- ========== SCROLL PROGRESS ========== -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="bg" aria-hidden="true"></div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <!-- ========== NAVIGATION ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-brand">
-        <span class="nav-logo">AS</span>
-        <span class="nav-name">Alan Soong</span>
+  <header class="topbar container">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AS</span>
+        <span>宋卓伦</span>
       </a>
-
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about"    class="nav-link">关于</a></li>
-        <li><a href="#education" class="nav-link">教育</a></li>
-        <li><a href="#skills"   class="nav-link">技能</a></li>
-        <li><a href="#research" class="nav-link">科研</a></li>
-        <li><a href="#awards"   class="nav-link">获奖</a></li>
-        <li><a href="#contact"  class="nav-link">联系</a></li>
-      </ul>
-
-      <div class="nav-actions">
-        <button class="icon-btn theme-toggle" id="themeToggle" aria-label="切换主题">
-          <i class="fas fa-moon" id="themeIcon"></i>
-        </button>
-        <a href="https://github.com/Alan-Soong" target="_blank" rel="noopener" class="icon-btn">
-          <i class="fab fa-github"></i>
+      <nav class="nav" aria-label="主导航">
+        <a href="#about" class="navlink">关于</a>
+        <a href="#education" class="navlink">教育</a>
+        <a href="#skills" class="navlink">技能</a>
+        <a href="#research" class="navlink">科研</a>
+        <a href="#awards" class="navlink">获奖</a>
+        <a href="#contact" class="navlink">联系</a>
+      </nav>
+      <div class="actions">
+        <a class="iconbtn" href="en.html" aria-label="Switch to English" title="English Version">
+          <span aria-hidden="true" style="font-family: 'SF Pro Display', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 0.5px;">EN</span>
         </a>
-        <button class="hamburger" id="hamburger" aria-label="菜单">
-          <span></span><span></span><span></span>
-        </button>
+        <a class="iconbtn" href="https://github.com/Alan-Soong" target="_blank" rel="noopener" aria-label="GitHub">
+          <span aria-hidden="true">⌂</span>
+        </a>
+        <a class="iconbtn" href="mailto:2311095@mail.nankai.edu.cn" aria-label="Email">
+          <span aria-hidden="true">✉</span>
+        </a>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <main>
-    <!-- ========== HERO ========== -->
-    <section id="hero" class="hero">
-      <div class="hero-bg">
-        <div class="hero-gradient-orb orb-1"></div>
-        <div class="hero-gradient-orb orb-2"></div>
-        <div class="hero-gradient-orb orb-3"></div>
-        <div class="hero-grid-pattern"></div>
-      </div>
-
-      <div class="container hero-inner">
-        <!-- Left: Text -->
-        <div class="hero-text">
-          <div class="hero-badge">
-            <span class="pulse-dot"></span>
-            南开大学 · 计算机科学与技术 · 2023 级
-          </div>
-
-          <h1 class="hero-title">
-            <span class="hero-name-zh">宋卓伦</span>
-            <span class="hero-name-en">Alan Soong</span>
-          </h1>
-
-          <p class="hero-tagline">
-            <span class="tag-chip"><i class="fas fa-eye"></i> 计算机视觉</span>
-            <span class="tag-chip"><i class="fas fa-brain"></i> 机器学习</span>
-            <span class="tag-chip"><i class="fas fa-server"></i> AI Infra</span>
-          </p>
-
-          <p class="hero-desc">
-            南开大学计算机科学与技术专业在读本科生，同时辅修数据科学与大数据技术。
-            热爱科研，积极探索 AI 前沿领域，希望在科研领域贡献自己的力量。
-          </p>
-
-          <div class="hero-actions">
-            <a href="#research" class="btn btn-primary">
-              <i class="fas fa-flask"></i> 查看科研经历
-            </a>
-            <a href="mailto:2311095@mail.nankai.edu.cn" class="btn btn-ghost">
-              <i class="fas fa-envelope"></i> 联系我
-            </a>
-          </div>
-
-          <div class="hero-stats">
-            <div class="hero-stat">
-              <span class="stat-num">3.67</span>
-              <span class="stat-label">GPA / 4.0</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="hero-stat">
-              <span class="stat-num">Top 20%</span>
-              <span class="stat-label">32 / 168</span>
-            </div>
-            <div class="stat-sep"></div>
-            <div class="hero-stat">
-              <span class="stat-num">6+</span>
-              <span class="stat-label">竞赛获奖</span>
-            </div>
-          </div>
+  <main id="top" class="container">
+    <section class="hero" aria-label="简介">
+      <div class="card hero-main reveal">
+        <div class="kicker"><span class="dot" aria-hidden="true"></span> 南开大学 · 计算机科学与技术 · 2023 级</div>
+        <h1 class="hero-title">宋卓伦</h1>
+        <p class="hero-sub">
+          南开大学计算机科学与技术专业在读本科生，同时辅修数据科学与大数据技术。
+          热爱科研，积极探索 AI 前沿领域，希望在科研领域贡献自己的力量。
+        </p>
+        <div class="chips" aria-label="方向">
+          <span class="chip">👁️ 计算机视觉</span>
+          <span class="chip">⛏️ 数据挖掘和机器学习</span>
+          <span class="chip">🧩 AI Infra</span>
         </div>
-
-        <!-- Right: Avatar + floating cards -->
-        <div class="hero-visual">
-          <div class="avatar-wrap">
-            <div class="avatar-ring ring-1"></div>
-            <div class="avatar-ring ring-2"></div>
-            <div class="avatar-core">
-              <!--
-                若要显示真实照片，取消下面注释并删除 .avatar-initials 块：
-                <img src="tex/照片白.jpg" alt="宋卓伦" class="avatar-photo" />
-              -->
-              <div class="avatar-initials">SZL</div>
-            </div>
-          </div>
-
-          <div class="float-card fc-1">
-            <i class="fas fa-lungs"></i>
-            <span>Medical AI</span>
-          </div>
-          <div class="float-card fc-2">
-            <i class="fas fa-code-branch"></i>
-            <span>Open Source</span>
-          </div>
-          <div class="float-card fc-3">
-            <i class="fas fa-chart-bar"></i>
-            <span>Data Science</span>
-          </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="#research">科研经历</a>
+          <a class="btn" href="#contact">联系方式</a>
+          <a class="btn" href="https://github.com/Alan-Soong" target="_blank" rel="noopener">GitHub</a>
         </div>
       </div>
 
-      <a href="#about" class="scroll-hint" aria-label="向下滚动">
-        <i class="fas fa-chevron-down"></i>
-      </a>
+      <div class="hero-side">
+        <div class="card profile reveal">
+          <div class="avatar" aria-label="头像占位">
+            SZL
+            <div class="online"><span class="dot" aria-hidden="true"></span> 在线</div>
+          </div>
+          <div class="pill">
+            <div><strong>职位标签</strong>：AI 研究与工程</div>
+            <small>“愿意坐得“冷板凳”，潜心钻研。”</small>
+          </div>
+          <div class="stats" aria-label="关键数据">
+            <div class="stat"><b>3.67/4.00</b><span>目前成绩</span></div>
+            <div class="stat"><b>32/168</b><span>目前排名</span></div>
+            <div class="stat"><b>547/485</b><span>四级/六级</span></div>
+          </div>
+        </div>
+
+        <div class="card reveal">
+          <div class="h2 compact">
+            <h2 class="small">一句话 slogan</h2>
+            <p>轻量 · 克制 · 可复现</p>
+          </div>
+          <div class="list">
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p>对<strong>计算机视觉、数据挖掘和机器学习、AI Infra</strong>等感兴趣，也有一些研究学习</p></div>
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p>积极主动，具备优秀团队协作能力；善于沟通，能够快速适应新环境；沉着耐心，愿意坐得“冷板凳”，潜心钻研，热衷于解决难题并追求创新。</p></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- ========== ABOUT ========== -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">About Me</span>
-          <h2 class="section-title">个人介绍</h2>
+    <section id="about" class="block" aria-label="关于我">
+      <div class="h2 reveal">
+        <h2>个人介绍</h2>
+        <p>来自简历 main.tex 的原文内容</p>
+      </div>
+      <div class="grid two">
+        <div class="card reveal">
+          <div class="list">
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>兴趣方向</strong>：对<strong>计算机视觉、数据挖掘和机器学习、AI Infra</strong>等感兴趣，也有一些研究学习</p></div>
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>性格特点</strong>：积极主动，具备优秀团队协作能力；善于沟通，能够快速适应新环境；沉着耐心，愿意坐得“冷板凳”，潜心钻研，热衷于解决难题并追求创新。</p></div>
+          </div>
         </div>
-
-        <div class="about-grid reveal-grid">
-          <div class="about-card reveal">
-            <div class="about-icon-wrap">
-              <i class="fas fa-compass"></i>
-            </div>
-            <h3>兴趣方向</h3>
-            <p>
-              对<strong>计算机视觉、数据挖掘和机器学习、AI Infra</strong>等感兴趣，
-              也有一些研究学习经历，持续深入探索 AI 前沿技术。
-            </p>
+        <div class="card reveal">
+          <div class="list">
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>自我陈述</strong>：我是一个ENFJ，外倾主导的行动力以及对``群体目标"的深层关注，以及一颗愿意在集体中发光发热的心，是我所具有以及未来不断发展的闪光点，希望我能在科研领域贡献自己的力量。此外我获得2023-2024、2024-2025社会公益奖学金，积极参加志愿服务和社会实践。</p></div>
           </div>
-
-          <div class="about-card reveal">
-            <div class="about-icon-wrap">
-              <i class="fas fa-users"></i>
-            </div>
-            <h3>性格特点</h3>
-            <p>
-              积极主动，具备优秀团队协作能力；善于沟通，能够快速适应新环境；
-              沉着耐心，愿意坐得"冷板凳"，潜心钻研，热衷于解决难题并追求创新。
-            </p>
+          <div class="mt12">
+            <span class="notice">✨ 2023-2024、2024-2025社会公益奖学金</span>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="about-card reveal">
-            <div class="about-icon-wrap">
-              <i class="fas fa-feather-alt"></i>
+    <section id="education" class="block" aria-label="教育背景">
+      <div class="h2 reveal">
+        <h2>教育背景</h2>
+        <p>紧凑时间线 · 重点信息</p>
+      </div>
+      <div class="timeline">
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h3>计算机科学与技术 · 南开大学 · 在读学士</h3>
+            <div class="time">2023--2027</div>
+          </div>
+          <div class="work">
+            <div class="list">
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>核心课程：高等数学，线性代数，数据结构，计算机体系结构，编译系统原理</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>目前成绩：3.67/4.00，多门课程核心课程大部分超过90分（A）</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>目前排名：32/168（全部学分绩排名20%以内，专业排名20%左右）</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>英语水平：四级547分，六级485分</p></div>
             </div>
-            <h3>自我陈述</h3>
-            <p>
-              我是一个 <strong>ENFJ</strong>，外倾主导的行动力以及对"群体目标"的深层关注，
-              以及一颗愿意在集体中发光发热的心，是我所具有以及未来不断发展的闪光点，
-              希望我能在科研领域贡献自己的力量。
-            </p>
-            <div class="scholarship-pill">
-              <i class="fas fa-star"></i>
-              2023-2024 &amp; 2024-2025 社会公益奖学金
+          </div>
+        </div>
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h3>数据科学与大数据技术 · 南开大学 · 在读辅修</h3>
+            <div class="time">2024--2027</div>
+          </div>
+          <div class="work">
+            <div class="list">
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>核心课程：概率论，数理统计，数据挖掘与机器学习，统计与大数据与分析软件，数据科学实战</p></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== EDUCATION ========== -->
-    <section id="education" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Education</span>
-          <h2 class="section-title">教育背景</h2>
+    <section id="skills" class="block" aria-label="专业技能">
+      <div class="h2 reveal">
+        <h2>专业技能</h2>
+        <p>按“前端 / 后端 / 工具链”分组展示</p>
+      </div>
+
+      <div class="grid three skillcols">
+        <div class="card reveal">
+          <h3>前端</h3>
+          <div class="notice">🚧 正在施工中，敬请期待</div>
         </div>
+        <div class="card reveal">
+          <h3>后端 / 数据处理</h3>
+          <div class="tags" aria-label="后端技能标签">
+            <span class="tag">🐍 Python</span>
+            <span class="tag">🧪 Pandas</span>
+            <span class="tag">🧠 Sklearn</span>
+            <span class="tag">🗄️ SQL</span>
+            <span class="tag">📦 C++</span>
+            <span class="tag">🧩 Scala</span>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>工具链 / 文档</h3>
+          <div class="tags" aria-label="工具链标签">
+            <span class="tag">🔧 Git</span>
+            <span class="tag">🧱 Overleaf</span>
+            <span class="tag">📊 Tableau</span>
+            <span class="tag">🧾 LaTeX</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="timeline">
-          <!-- NKU CS -->
-          <div class="tl-item reveal">
-            <div class="tl-marker">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <h3 class="tl-degree">计算机科学与技术</h3>
-                  <span class="tl-school">
-                    <i class="fas fa-university"></i> 南开大学
-                  </span>
-                </div>
-                <div class="tl-right">
-                  <span class="tl-period">2023 — 2027</span>
-                  <span class="badge badge-blue">在读学士</span>
-                </div>
-              </div>
+    <section id="research" class="block" aria-label="科研经历">
+      <div class="h2 reveal">
+        <h2>科研经历</h2>
+        <p>截止至2026.03</p>
+      </div>
 
-              <div class="tl-stats">
-                <div class="tl-stat-chip">
-                  <span class="tl-stat-val">3.67 / 4.00</span>
-                  <span class="tl-stat-key">GPA</span>
-                </div>
-                <div class="tl-stat-chip">
-                  <span class="tl-stat-val">32 / 168</span>
-                  <span class="tl-stat-key">专业排名</span>
-                </div>
-                <div class="tl-stat-chip">
-                  <span class="tl-stat-val">547 / 485</span>
-                  <span class="tl-stat-key">CET-4 / CET-6</span>
-                </div>
-              </div>
-
-              <ul class="tl-detail-list">
-                <li>
-                  <i class="fas fa-book"></i>
-                  <span><strong>核心课程：</strong>高等数学，线性代数，数据结构，计算机体系结构，编译系统原理</span>
-                </li>
-                <li>
-                  <i class="fas fa-chart-line"></i>
-                  <span>目前成绩：3.67/4.00，多门课程核心课程大部分超过 90 分（A）</span>
-                </li>
-                <li>
-                  <i class="fas fa-sort-numeric-down"></i>
-                  <span>目前排名：32/168（全部学分绩排名 20% 以内，专业排名 20% 左右）</span>
-                </li>
-                <li>
-                  <i class="fas fa-language"></i>
-                  <span>英语水平：四级 547 分，六级 485 分</span>
-                </li>
-              </ul>
+      <div class="timeline">
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h3>DUPA-net：具有密集跳跃连接和变分推断的肺炎医学图像分割网络</h3>
+            <div class="time">2025.03--2026.04</div>
+          </div>
+          <div class="work">
+            <div class="list">
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>作为核心参与者参与基于扩散模型的cDAL模型的改进创新的代码实现，模型性能提升</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>南开大学人工智能学院代煜教授指导的``百项工程"校级重点项目，聚焦肺部医学影像分割</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>参加全国大学生医学创新大赛暨``一带一路"国际竞赛交叉学科赛道</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>目前CCC2026（中国控制会议）论文在投，非第一作者</p></div>
             </div>
           </div>
+        </div>
 
-          <!-- NKU Data Science Minor -->
-          <div class="tl-item reveal">
-            <div class="tl-marker tl-marker-secondary">
-              <i class="fas fa-database"></i>
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h3>实习实训项目：基于鸿蒙生态系统开发的本地美食指南APP</h3>
+            <div class="time">2025.06--2025.07</div>
+          </div>
+          <div class="work">
+            <div class="list">
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>作为负责人，聚焦本地美食搜索和个性化推荐，该项目团队获评``优秀团队"</p></div>
             </div>
-            <div class="tl-card">
-              <div class="tl-header">
-                <div>
-                  <h3 class="tl-degree">数据科学与大数据技术</h3>
-                  <span class="tl-school">
-                    <i class="fas fa-university"></i> 南开大学
-                  </span>
-                </div>
-                <div class="tl-right">
-                  <span class="tl-period">2024 — 2027</span>
-                  <span class="badge badge-purple">在读辅修</span>
-                </div>
-              </div>
-              <ul class="tl-detail-list">
-                <li>
-                  <i class="fas fa-book"></i>
-                  <span><strong>核心课程：</strong>概率论，数理统计，数据挖掘与机器学习，统计与大数据分析软件，数据科学实战</span>
-                </li>
-              </ul>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h3>芯片界面设计程序项目</h3>
+            <div class="time">2025.03--2025.12</div>
+          </div>
+          <div class="work">
+            <div class="list">
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>为北京某研究所实验室远程开发搭建的QT程序，实现与EDA芯片布局相关，目前正在尝试落地</p></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="entry reveal">
+          <div class="entry-head">
+            <h3>DMML讲义编纂校对</h3>
+            <div class="time">2025.09--</div>
+          </div>
+          <div class="work">
+            <div class="list">
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>加入南开大学统计与数据科学学院付盛副教授工作组内参与数据挖掘与机器学习课程讲义编纂</p></div>
+              <div class="li"><span class="bullet" aria-hidden="true"></span><p>考虑后续落地，形成一套全面的机器学习类丛书</p></div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== SKILLS ========== -->
-    <section id="skills" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Skills</span>
-          <h2 class="section-title">专业技能</h2>
+    <section id="awards" class="block" aria-label="竞赛获奖">
+      <div class="h2 reveal">
+        <h2>竞赛获奖</h2>
+        <p>截止至2026.03</p>
+      </div>
+
+      <div class="grid two">
+        <div class="card reveal">
+          <div class="list">
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2024.12</strong> 第十六届全国大学生数学竞赛省级二等奖</p></div>
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.06</strong> 先导智算校内专项赛——南开大学站一等奖</p></div>
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.07</strong> 全国大学生医学创新大赛暨``一带一路"国际竞赛交叉学科赛道复赛三等奖</p></div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="list">
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.09</strong> 第八届CCF-TCARCH 计算机体系结构挑战赛三等奖</p></div>
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.11</strong> 全国大学生数学建模竞赛省级二等奖</p></div>
+            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.12</strong> 亚太地区大学生数学建模竞赛三等奖</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="block" aria-label="联系方式">
+      <div class="h2 reveal">
+        <h2>联系方式</h2>
+        <p>欢迎交流与合作</p>
+      </div>
+
+      <div class="grid four contacts">
+        <a class="card reveal" href="mailto:2311095@mail.nankai.edu.cn">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">✉</div>
+            <div>
+              <small>Email</small>
+              <div>2311095@mail.nankai.edu.cn</div>
+            </div>
+          </div>
+        </a>
+        <a class="card reveal" href="tel:18302289029">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">☎</div>
+            <div>
+              <small>Tel</small>
+              <div>183 0228 9029</div>
+            </div>
+          </div>
+        </a>
+        <a class="card reveal" href="https://github.com/Alan-Soong" target="_blank" rel="noopener">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">⌂</div>
+            <div>
+              <small>GitHub</small>
+              <div>github.com/Alan-Soong</div>
+            </div>
+          </div>
+        </a>
+        <div class="card reveal">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">⌁</div>
+            <div>
+              <small>地址</small>
+              <div>天津市津南区海河教育园区同砚路38号</div>
+            </div>
+          </div>
         </div>
 
-        <div class="skills-grid reveal-grid">
-          <div class="skill-cat reveal">
-            <div class="skill-cat-hd">
-              <div class="skill-cat-icon"><i class="fas fa-code"></i></div>
-              <h3>编程语言</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="stag stag-primary">Python</span>
-              <span class="stag stag-sub">Pandas</span>
-              <span class="stag stag-sub">Sklearn</span>
-              <span class="stag stag-primary">C++</span>
-              <span class="stag stag-primary">SQL</span>
-              <span class="stag stag-primary">Scala</span>
-              <span class="stag stag-sub">LaTeX</span>
+        <div class="card reveal">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">𝕏</div>
+            <div>
+              <small>Twitter / X</small>
+              <div>🚧 正在施工中，敬请期待</div>
             </div>
           </div>
-
-          <div class="skill-cat reveal">
-            <div class="skill-cat-hd">
-              <div class="skill-cat-icon"><i class="fas fa-tools"></i></div>
-              <h3>工具 &amp; 平台</h3>
-            </div>
-            <div class="skill-tags">
-              <span class="stag stag-primary">Git</span>
-              <span class="stag stag-primary">Overleaf</span>
-              <span class="stag stag-primary">Tableau</span>
+        </div>
+        <div class="card reveal" href="https://alan-soong.github.io/employment/" target="_blank" rel="noopener">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">⌗</div>
+            <div>
+              <small>Blog</small>
+              <div>我的博客</div>
             </div>
           </div>
-
-          <div class="skill-cat reveal">
-            <div class="skill-cat-hd">
-              <div class="skill-cat-icon"><i class="fas fa-brain"></i></div>
-              <h3>研究方向</h3>
+        </div>
+        <div class="card reveal">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">◎</div>
+            <div>
+              <small>简历</small>
+              <div>🚧 正在施工中，敬请期待</div>
             </div>
-            <div class="skill-tags">
-              <span class="stag stag-accent">计算机视觉</span>
-              <span class="stag stag-accent">机器学习</span>
-              <span class="stag stag-accent">数据挖掘</span>
-              <span class="stag stag-accent">AI Infra</span>
-              <span class="stag stag-accent">医学图像分析</span>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="contact">
+            <div class="ic" aria-hidden="true">⌘</div>
+            <div>
+              <small>合作</small>
+              <div>欢迎发邮件交流</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ========== RESEARCH ========== -->
-    <section id="research" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Research &amp; Projects</span>
-          <h2 class="section-title">科研经历</h2>
-          <p class="section-sub">截止至 2026.03</p>
-        </div>
-
-        <div class="proj-grid">
-          <!-- Featured: DUPA-net -->
-          <div class="proj-card proj-featured reveal">
-            <div class="proj-card-header">
-              <div class="proj-icon pi-red"><i class="fas fa-lungs"></i></div>
-              <div class="proj-meta">
-                <span class="proj-period"><i class="fas fa-calendar-alt"></i> 2025.03 — 2026.04</span>
-                <span class="proj-badge pb-blue">校级重点项目</span>
-              </div>
-            </div>
-            <h3 class="proj-title">DUPA-net</h3>
-            <p class="proj-subtitle">具有密集跳跃连接和变分推断的肺炎医学图像分割网络</p>
-            <ul class="proj-points">
-              <li>作为核心参与者参与基于扩散模型的 cDAL 模型的改进创新的代码实现，模型性能提升</li>
-              <li>南开大学人工智能学院<strong>代煜教授</strong>指导的"百项工程"校级重点项目，聚焦肺部医学影像分割</li>
-              <li>参加全国大学生医学创新大赛暨"一带一路"国际竞赛交叉学科赛道</li>
-              <li>目前 <strong>CCC2026</strong>（中国控制会议）论文在投，非第一作者</li>
-            </ul>
-            <div class="proj-tech">
-              <span class="tech">Diffusion Model</span>
-              <span class="tech">Medical Segmentation</span>
-              <span class="tech">Deep Learning</span>
-              <span class="tech">PyTorch</span>
-            </div>
-          </div>
-
-          <!-- HarmonyOS App -->
-          <div class="proj-card reveal">
-            <div class="proj-card-header">
-              <div class="proj-icon pi-green"><i class="fas fa-mobile-alt"></i></div>
-              <div class="proj-meta">
-                <span class="proj-period"><i class="fas fa-calendar-alt"></i> 2025.06 — 2025.07</span>
-                <span class="proj-badge pb-green">优秀团队</span>
-              </div>
-            </div>
-            <h3 class="proj-title">本地美食指南 APP</h3>
-            <p class="proj-subtitle">基于鸿蒙生态系统开发的实习实训项目</p>
-            <ul class="proj-points">
-              <li>作为<strong>负责人</strong>，聚焦本地美食搜索和个性化推荐，该项目团队获评"优秀团队"</li>
-            </ul>
-            <div class="proj-tech">
-              <span class="tech">HarmonyOS</span>
-              <span class="tech">推荐系统</span>
-            </div>
-          </div>
-
-          <!-- Chip Interface -->
-          <div class="proj-card reveal">
-            <div class="proj-card-header">
-              <div class="proj-icon pi-orange"><i class="fas fa-microchip"></i></div>
-              <div class="proj-meta">
-                <span class="proj-period"><i class="fas fa-calendar-alt"></i> 2025.03 — 2025.12</span>
-                <span class="proj-badge pb-orange">落地探索中</span>
-              </div>
-            </div>
-            <h3 class="proj-title">芯片界面设计程序</h3>
-            <p class="proj-subtitle">EDA 芯片布局相关 QT 程序</p>
-            <ul class="proj-points">
-              <li>为北京某研究所实验室远程开发搭建的 QT 程序，实现与 EDA 芯片布局相关，目前正在尝试落地</li>
-            </ul>
-            <div class="proj-tech">
-              <span class="tech">Qt</span>
-              <span class="tech">EDA</span>
-              <span class="tech">C++</span>
-            </div>
-          </div>
-
-          <!-- DMML -->
-          <div class="proj-card reveal">
-            <div class="proj-card-header">
-              <div class="proj-icon pi-purple"><i class="fas fa-book-open"></i></div>
-              <div class="proj-meta">
-                <span class="proj-period"><i class="fas fa-calendar-alt"></i> 2025.09 — 至今</span>
-                <span class="proj-badge pb-purple">进行中</span>
-              </div>
-            </div>
-            <h3 class="proj-title">DMML 讲义编纂校对</h3>
-            <p class="proj-subtitle">数据挖掘与机器学习课程讲义</p>
-            <ul class="proj-points">
-              <li>加入南开大学统计与数据科学学院<strong>付盛副教授</strong>工作组，参与数据挖掘与机器学习课程讲义编纂</li>
-              <li>考虑后续落地，形成一套全面的机器学习类丛书</li>
-            </ul>
-            <div class="proj-tech">
-              <span class="tech">LaTeX</span>
-              <span class="tech">Machine Learning</span>
-              <span class="tech">Data Mining</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== AWARDS ========== -->
-    <section id="awards" class="section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Awards</span>
-          <h2 class="section-title">竞赛获奖</h2>
-          <p class="section-sub">截止至 2026.03</p>
-        </div>
-
-        <div class="awards-list">
-          <div class="award-item reveal">
-            <div class="award-date-col">
-              <span class="award-date">2024.12</span>
-            </div>
-            <div class="award-medal medal-silver"><i class="fas fa-medal"></i></div>
-            <div class="award-body">
-              <h4>第十六届全国大学生数学竞赛</h4>
-              <span class="award-level lv-silver">省级二等奖</span>
-            </div>
-          </div>
-
-          <div class="award-item reveal">
-            <div class="award-date-col">
-              <span class="award-date">2025.06</span>
-            </div>
-            <div class="award-medal medal-gold"><i class="fas fa-trophy"></i></div>
-            <div class="award-body">
-              <h4>先导智算校内专项赛——南开大学站</h4>
-              <span class="award-level lv-gold">一等奖</span>
-            </div>
-          </div>
-
-          <div class="award-item reveal">
-            <div class="award-date-col">
-              <span class="award-date">2025.07</span>
-            </div>
-            <div class="award-medal medal-bronze"><i class="fas fa-award"></i></div>
-            <div class="award-body">
-              <h4>全国大学生医学创新大赛暨"一带一路"国际竞赛交叉学科赛道复赛</h4>
-              <span class="award-level lv-bronze">三等奖</span>
-            </div>
-          </div>
-
-          <div class="award-item reveal">
-            <div class="award-date-col">
-              <span class="award-date">2025.09</span>
-            </div>
-            <div class="award-medal medal-bronze"><i class="fas fa-microchip"></i></div>
-            <div class="award-body">
-              <h4>第八届 CCF-TCARCH 计算机体系结构挑战赛</h4>
-              <span class="award-level lv-bronze">三等奖</span>
-            </div>
-          </div>
-
-          <div class="award-item reveal">
-            <div class="award-date-col">
-              <span class="award-date">2025.11</span>
-            </div>
-            <div class="award-medal medal-silver"><i class="fas fa-calculator"></i></div>
-            <div class="award-body">
-              <h4>全国大学生数学建模竞赛</h4>
-              <span class="award-level lv-silver">省级二等奖</span>
-            </div>
-          </div>
-
-          <div class="award-item reveal">
-            <div class="award-date-col">
-              <span class="award-date">2025.12</span>
-            </div>
-            <div class="award-medal medal-bronze"><i class="fas fa-globe-asia"></i></div>
-            <div class="award-body">
-              <h4>亚太地区大学生数学建模竞赛</h4>
-              <span class="award-level lv-bronze">三等奖</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== CONTACT ========== -->
-    <section id="contact" class="section section-alt">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Contact</span>
-          <h2 class="section-title">联系方式</h2>
-        </div>
-
-        <div class="contact-grid reveal-grid">
-          <a href="mailto:2311095@mail.nankai.edu.cn" class="contact-card reveal">
-            <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
-            <div class="contact-info">
-              <span class="contact-label">邮箱</span>
-              <span class="contact-val">2311095@mail.nankai.edu.cn</span>
-            </div>
-            <i class="fas fa-external-link-alt contact-ext"></i>
-          </a>
-
-          <a href="tel:18302289029" class="contact-card reveal">
-            <div class="contact-icon-wrap"><i class="fas fa-phone"></i></div>
-            <div class="contact-info">
-              <span class="contact-label">电话</span>
-              <span class="contact-val">183 0228 9029</span>
-            </div>
-          </a>
-
-          <a href="https://github.com/Alan-Soong" target="_blank" rel="noopener" class="contact-card reveal">
-            <div class="contact-icon-wrap"><i class="fab fa-github"></i></div>
-            <div class="contact-info">
-              <span class="contact-label">GitHub</span>
-              <span class="contact-val">Alan-Soong</span>
-            </div>
-            <i class="fas fa-external-link-alt contact-ext"></i>
-          </a>
-
-          <div class="contact-card reveal">
-            <div class="contact-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
-            <div class="contact-info">
-              <span class="contact-label">地址</span>
-              <span class="contact-val">天津市津南区海河教育园区同砚路 38 号</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <footer class="footer">© 2026 宋卓伦 · github.com/Alan-Soong</footer>
   </main>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2026 宋卓伦 · Alan Soong · 南开大学</p>
-      <div class="footer-links">
-        <a href="https://github.com/Alan-Soong" target="_blank" rel="noopener">
-          <i class="fab fa-github"></i> Alan-Soong
-        </a>
-        <a href="mailto:2311095@mail.nankai.edu.cn">
-          <i class="fas fa-envelope"></i> Email
-        </a>
-      </div>
-    </div>
-  </footer>
+  <button class="totop" id="totop" aria-label="返回顶部">↑</button>
 
-  <!-- Back to top -->
-  <button class="back-to-top" id="backToTop" aria-label="返回顶部">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <script src="js/main.js"></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>

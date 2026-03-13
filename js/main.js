@@ -1,123 +1,89 @@
-/* ============================================================
-   Personal Homepage — main.js
-   宋卓伦 · Alan Song
-   ============================================================ */
+(() => {
+  const $ = (sel, root = document) => root.querySelector(sel);
+  const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-// ── 1. Theme Toggle ──────────────────────────────────────────
-const html        = document.documentElement;
-const themeToggle = document.getElementById('themeToggle');
-const themeIcon   = document.getElementById('themeIcon');
+  const progress = $('#progress');
+  const toTop = $('#totop');
+  const navLinks = $$('.nav a.navlink');
+  const sectionIds = navLinks
+    .map((a) => (a.getAttribute('href') || '').trim())
+    .filter((href) => href.startsWith('#'))
+    .map((href) => href.slice(1));
+  const sections = sectionIds
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
 
-function applyTheme(theme) {
-  html.setAttribute('data-theme', theme);
-  themeIcon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-  localStorage.setItem('theme', theme);
-}
+  const updateProgress = () => {
+    if (!progress) return;
+    const doc = document.documentElement;
+    const total = Math.max(1, doc.scrollHeight - doc.clientHeight);
+    const cur = doc.scrollTop || document.body.scrollTop || 0;
+    const pct = Math.max(0, Math.min(100, (cur / total) * 100));
+    progress.style.width = `${pct}%`;
+  };
 
-// Init from saved preference or system preference
-const savedTheme = localStorage.getItem('theme')
-  || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-applyTheme(savedTheme);
+  const updateToTop = () => {
+    if (!toTop) return;
+    toTop.classList.toggle('show', window.scrollY > 620);
+  };
 
-themeToggle.addEventListener('click', () => {
-  applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-});
+  const onScroll = () => {
+    updateProgress();
+    updateToTop();
+  };
 
-// ── 2. Mobile Hamburger Menu ──────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const navLinks  = document.getElementById('navLinks');
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+  updateToTop();
 
-hamburger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  hamburger.classList.toggle('open', open);
-  hamburger.setAttribute('aria-expanded', open);
-});
-
-// Close menu on link click
-navLinks.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    hamburger.classList.remove('open');
-  });
-});
-
-// ── 3. Navbar scroll effect ───────────────────────────────────
-const navbar = document.getElementById('navbar');
-
-function onScroll() {
-  const y = window.scrollY;
-
-  // Add shadow when scrolled
-  navbar.classList.toggle('scrolled', y > 10);
-
-  // Back-to-top visibility
-  backToTop.classList.toggle('visible', y > 400);
-
-  // Scroll progress bar
-  const docH    = document.documentElement.scrollHeight - window.innerHeight;
-  const pct     = docH > 0 ? (y / docH) * 100 : 0;
-  scrollProgress.style.width = pct + '%';
-
-  // Active nav link based on section in view
-  updateActiveLink();
-}
-
-window.addEventListener('scroll', onScroll, { passive: true });
-
-// ── 4. Active Navigation Link ─────────────────────────────────
-const sections  = document.querySelectorAll('section[id]');
-const navAnchors = document.querySelectorAll('.nav-link');
-
-function updateActiveLink() {
-  let current = '';
-  sections.forEach(sec => {
-    const rect = sec.getBoundingClientRect();
-    if (rect.top <= 80 && rect.bottom > 80) current = sec.id;
-  });
-  navAnchors.forEach(a => {
-    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
-  });
-}
-
-// ── 5. Scroll Progress ────────────────────────────────────────
-const scrollProgress = document.getElementById('scrollProgress');
-
-// ── 6. Scroll Animations (Intersection Observer) ──────────────
-const revealEls = document.querySelectorAll('.reveal');
-const revealObs = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        revealObs.unobserve(entry.target);
-      }
+  if (toTop) {
+    toTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-  },
-  { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
-);
+  }
 
-revealEls.forEach(el => revealObs.observe(el));
+  // Reveal on scroll
+  const revealEls = $$('.reveal');
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          e.target.classList.add('on');
+        }
+      }
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
 
-// ── 7. Back to Top ────────────────────────────────────────────
-const backToTop = document.getElementById('backToTop');
-backToTop.addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
-
-// ── 8. Smooth scroll for all in-page anchor links ────────────
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', (e) => {
-    const target = document.querySelector(anchor.getAttribute('href'));
-    if (!target) return;
-    e.preventDefault();
-    const offset = 64; // navbar height
-    const top    = target.getBoundingClientRect().top + window.scrollY - offset;
-    window.scrollTo({ top, behavior: 'smooth' });
+  revealEls.forEach((el) => {
+    revealObserver.observe(el);
+    // Extra safety: render visible elements without waiting for scroll event.
+    // getBoundingClientRect().top is relative to viewport.
+    if (el.getBoundingClientRect().top < window.innerHeight) {
+        el.classList.add('on');
+    }
   });
-});
 
-// ── 9. Hero typing animation (subtitle tag-chips) ────────────
-// No typing animation here — chips appear naturally on load.
+  // Active nav link
+  if (sections.length && navLinks.length) {
+    const setActive = (id) => {
+      for (const a of navLinks) {
+        const active = a.getAttribute('href') === `#${id}`;
+        a.classList.toggle('active', active);
+      }
+    };
 
-// ── 10. Initial call ─────────────────────────────────────────
-onScroll();
+    const sectionObserver = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0));
+        if (visible[0]?.target?.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: '-45% 0px -50% 0px', threshold: [0.1, 0.2, 0.35, 0.5] }
+    );
+
+    sections.forEach((sec) => sectionObserver.observe(sec));
+  }
+})();
