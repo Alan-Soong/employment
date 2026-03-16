@@ -95,25 +95,38 @@
     });
   }
 
-  // Reveal on scroll
+  // Reveal on scroll — with stagger for sibling elements entering together
   const revealEls = $$('.reveal');
   const revealObserver = new IntersectionObserver(
     (entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          e.target.classList.add('on');
+      // Compute all stagger delays before mutating any class (sibling index is stable)
+      const visible = entries.filter(e => e.isIntersecting && !e.target.classList.contains('on'));
+      const delayMap = new Map();
+      visible.forEach(e => {
+        const siblings = e.target.parentElement
+          ? Array.from(e.target.parentElement.querySelectorAll(':scope > .reveal:not(.on)'))
+          : [];
+        delayMap.set(e.target, Math.max(0, siblings.indexOf(e.target)) * 0.07);
+      });
+      visible.forEach(e => {
+        const delay = delayMap.get(e.target) || 0;
+        if (delay > 0) {
+          e.target.style.transitionDelay = `${delay}s`;
+          setTimeout(() => { e.target.style.transitionDelay = ''; }, 600 + delay * 1000);
         }
-      }
+        e.target.classList.add('on');
+        revealObserver.unobserve(e.target);
+      });
     },
     { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
   );
 
   revealEls.forEach((el) => {
-    revealObserver.observe(el);
-    // Extra safety: render visible elements without waiting for scroll event.
-    // getBoundingClientRect().top is relative to viewport.
+    // Elements already in the viewport get revealed immediately without observer overhead
     if (el.getBoundingClientRect().top < window.innerHeight) {
-        el.classList.add('on');
+      el.classList.add('on');
+    } else {
+      revealObserver.observe(el);
     }
   });
 
