@@ -2,30 +2,46 @@
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
 
-  // Theme (manual override)
-  const themeToggle = $('#themeToggle');
-  const THEME_KEY = 'theme'; // 'light' | 'dark'
+  const themeToggle = $("#themeToggle");
+  const root = document.documentElement;
+  const THEME_KEY = "theme";
+  const lang = (root.getAttribute("lang") || "").toLowerCase();
+  const isEnglish = lang.startsWith("en");
+
+  const themeLabels = {
+    light: {
+      aria: isEnglish ? "Switch to dark mode" : "切换到深色模式",
+      title: isEnglish ? "Dark mode" : "深色模式",
+      icon: "☾"
+    },
+    dark: {
+      aria: isEnglish ? "Switch to light mode" : "切换到浅色模式",
+      title: isEnglish ? "Light mode" : "浅色模式",
+      icon: "☀"
+    }
+  };
+
   const getSystemTheme = () =>
-    window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      ? 'dark'
-      : 'light';
+    window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
 
   const applyTheme = (theme) => {
-    const root = document.documentElement;
-    if (theme === 'dark' || theme === 'light') {
-      root.setAttribute('data-theme', theme);
+    if (theme === "dark" || theme === "light") {
+      root.setAttribute("data-theme", theme);
     } else {
-      root.removeAttribute('data-theme');
+      root.removeAttribute("data-theme");
     }
   };
 
   const setThemeToggleUI = (theme) => {
     if (!themeToggle) return;
-    const icon = themeToggle.querySelector('span') || themeToggle;
-    const isDark = theme === 'dark';
-    icon.textContent = isDark ? '☀' : '☾';
-    themeToggle.setAttribute('aria-label', isDark ? '切换到浅色模式' : '切换到深色模式');
-    themeToggle.title = isDark ? '切换到浅色' : '切换到深色';
+    const mode = theme === "dark" ? "dark" : "light";
+    const ui = themeLabels[mode];
+    const icon = themeToggle.querySelector("span") || themeToggle;
+    icon.textContent = ui.icon;
+    themeToggle.setAttribute("aria-label", ui.aria);
+    themeToggle.title = ui.title;
   };
 
   const storedTheme = (() => {
@@ -36,47 +52,47 @@
     }
   })();
 
-  const initialTheme = storedTheme === 'dark' || storedTheme === 'light' ? storedTheme : getSystemTheme();
-  if (storedTheme === 'dark' || storedTheme === 'light') applyTheme(storedTheme);
+  const initialTheme = storedTheme === "dark" || storedTheme === "light" ? storedTheme : getSystemTheme();
+  if (storedTheme === "dark" || storedTheme === "light") {
+    applyTheme(storedTheme);
+  }
   setThemeToggleUI(initialTheme);
 
   if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme') || getSystemTheme();
-      const next = current === 'dark' ? 'light' : 'dark';
+    themeToggle.addEventListener("click", () => {
+      const current = root.getAttribute("data-theme") || getSystemTheme();
+      const next = current === "dark" ? "light" : "dark";
       applyTheme(next);
       try {
         localStorage.setItem(THEME_KEY, next);
       } catch {
-        // ignore
+        // ignore storage failures
       }
       setThemeToggleUI(next);
     });
   }
 
-  const progress = $('#progress');
-  const toTop = $('#totop');
-  const navLinks = $$('.nav a.navlink');
+  const progress = $("#progress");
+  const toTop = $("#totop");
+  const navLinks = $$(".navlink");
   const sectionIds = navLinks
-    .map((a) => (a.getAttribute('href') || '').trim())
-    .filter((href) => href.startsWith('#'))
+    .map((a) => (a.getAttribute("href") || "").trim())
+    .filter((href) => href.startsWith("#"))
     .map((href) => href.slice(1));
-  const sections = sectionIds
-    .map((id) => document.getElementById(id))
-    .filter(Boolean);
+  const sections = sectionIds.map((id) => document.getElementById(id)).filter(Boolean);
 
   const updateProgress = () => {
     if (!progress) return;
     const doc = document.documentElement;
     const total = Math.max(1, doc.scrollHeight - doc.clientHeight);
-    const cur = doc.scrollTop || document.body.scrollTop || 0;
-    const pct = Math.max(0, Math.min(100, (cur / total) * 100));
-    progress.style.width = `${pct}%`;
+    const current = doc.scrollTop || document.body.scrollTop || 0;
+    const percent = Math.max(0, Math.min(100, (current / total) * 100));
+    progress.style.width = `${percent}%`;
   };
 
   const updateToTop = () => {
     if (!toTop) return;
-    toTop.classList.toggle('show', window.scrollY > 620);
+    toTop.classList.toggle("show", window.scrollY > 620);
   };
 
   const onScroll = () => {
@@ -84,118 +100,117 @@
     updateToTop();
   };
 
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', updateProgress);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", updateProgress);
   updateProgress();
   updateToTop();
 
   if (toTop) {
-    toTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    toTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
   }
 
-  // Reveal on scroll — with stagger for sibling elements entering together
-  const revealEls = $$('.reveal');
+  const revealEls = $$(".reveal");
   const revealObserver = new IntersectionObserver(
     (entries) => {
-      // Compute all stagger delays before mutating any class (sibling index is stable)
-      const visible = entries.filter(e => e.isIntersecting && !e.target.classList.contains('on'));
+      const visible = entries.filter((entry) => entry.isIntersecting && !entry.target.classList.contains("on"));
       const delayMap = new Map();
-      visible.forEach(e => {
-        const siblings = e.target.parentElement
-          ? Array.from(e.target.parentElement.querySelectorAll(':scope > .reveal:not(.on)'))
+
+      visible.forEach((entry) => {
+        const siblings = entry.target.parentElement
+          ? Array.from(entry.target.parentElement.querySelectorAll(":scope > .reveal:not(.on)"))
           : [];
-        delayMap.set(e.target, Math.max(0, siblings.indexOf(e.target)) * 0.07);
+        delayMap.set(entry.target, Math.max(0, siblings.indexOf(entry.target)) * 0.07);
       });
-      visible.forEach(e => {
-        const delay = delayMap.get(e.target) || 0;
+
+      visible.forEach((entry) => {
+        const delay = delayMap.get(entry.target) || 0;
         if (delay > 0) {
-          e.target.style.transitionDelay = `${delay}s`;
-          setTimeout(() => { e.target.style.transitionDelay = ''; }, 600 + delay * 1000);
+          entry.target.style.transitionDelay = `${delay}s`;
+          setTimeout(() => {
+            entry.target.style.transitionDelay = "";
+          }, 600 + delay * 1000);
         }
-        e.target.classList.add('on');
-        revealObserver.unobserve(e.target);
+        entry.target.classList.add("on");
+        revealObserver.unobserve(entry.target);
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
   );
 
   revealEls.forEach((el) => {
-    // Elements already in the viewport get revealed immediately without observer overhead
     if (el.getBoundingClientRect().top < window.innerHeight) {
-      el.classList.add('on');
+      el.classList.add("on");
     } else {
       revealObserver.observe(el);
     }
   });
 
-  // Active nav link
   if (sections.length && navLinks.length) {
     const setActive = (id) => {
-      for (const a of navLinks) {
-        const active = a.getAttribute('href') === `#${id}`;
-        a.classList.toggle('active', active);
-      }
+      navLinks.forEach((link) => {
+        link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+      });
     };
 
     const sectionObserver = new IntersectionObserver(
       (entries) => {
         const visible = entries
-          .filter((e) => e.isIntersecting)
+          .filter((entry) => entry.isIntersecting)
           .sort((a, b) => (b.intersectionRatio || 0) - (a.intersectionRatio || 0));
-        if (visible[0]?.target?.id) setActive(visible[0].target.id);
+        if (visible[0] && visible[0].target && visible[0].target.id) {
+          setActive(visible[0].target.id);
+        }
       },
-      { rootMargin: '-45% 0px -50% 0px', threshold: [0.1, 0.2, 0.35, 0.5] }
+      { rootMargin: "-40% 0px -52% 0px", threshold: [0.12, 0.25, 0.4, 0.6] }
     );
 
-    sections.forEach((sec) => sectionObserver.observe(sec));
+    sections.forEach((section) => sectionObserver.observe(section));
   }
 
-  // Pet: subtle follow + head turn (monochrome)
-  const pet = $('#pet');
+  const pet = $("#pet");
   if (pet) {
-    const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const head = pet.querySelector('.pet-head');
+    const reducedMotion =
+      window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const head = pet.querySelector(".pet-head");
 
     if (!reducedMotion && head) {
-      const clamp = (v, min, max) => Math.max(min, Math.min(max, v));
-      const lerp = (a, b, t) => a + (b - a) * t;
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+      const lerp = (from, to, amount) => from + (to - from) * amount;
 
       let pointerX = window.innerWidth * 0.5;
       let pointerY = window.innerHeight * 0.5;
-      let curX = 0;
-      let curY = 0;
-      let curRot = 0;
+      let currentX = 0;
+      let currentY = 0;
+      let currentRotation = 0;
 
       window.addEventListener(
-        'pointermove',
-        (e) => {
-          pointerX = e.clientX;
-          pointerY = e.clientY;
+        "pointermove",
+        (event) => {
+          pointerX = event.clientX;
+          pointerY = event.clientY;
         },
         { passive: true }
       );
 
       const tick = () => {
-        const r = pet.getBoundingClientRect();
-        const cx = r.left + r.width * 0.5;
-        const cy = r.top + r.height * 0.58;
-        const dx = pointerX - cx;
-        const dy = pointerY - cy;
+        const rect = pet.getBoundingClientRect();
+        const centerX = rect.left + rect.width * 0.5;
+        const centerY = rect.top + rect.height * 0.58;
+        const dx = pointerX - centerX;
+        const dy = pointerY - centerY;
 
-        // Follow (small nudge so content remains primary)
         const targetX = clamp(dx / 18, -22, 22);
         const targetY = clamp(dy / 18, -16, 16);
-        curX = lerp(curX, targetX, 0.12);
-        curY = lerp(curY, targetY, 0.12);
-        pet.style.setProperty('--pet-x', `${curX.toFixed(2)}px`);
-        pet.style.setProperty('--pet-y', `${curY.toFixed(2)}px`);
+        currentX = lerp(currentX, targetX, 0.12);
+        currentY = lerp(currentY, targetY, 0.12);
+        pet.style.setProperty("--pet-x", `${currentX.toFixed(2)}px`);
+        pet.style.setProperty("--pet-y", `${currentY.toFixed(2)}px`);
 
-        // Head turn (mainly horizontal)
-        const targetRot = clamp((dx / 180) * 16, -18, 18);
-        curRot = lerp(curRot, targetRot, 0.18);
-        head.style.setProperty('--pet-rot', `${curRot.toFixed(2)}deg`);
+        const targetRotation = clamp((dx / 180) * 16, -18, 18);
+        currentRotation = lerp(currentRotation, targetRotation, 0.18);
+        head.style.setProperty("--pet-rot", `${currentRotation.toFixed(2)}deg`);
 
         requestAnimationFrame(tick);
       };

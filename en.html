@@ -4,372 +4,237 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alan Soong · Homepage</title>
-  <meta name="description" content="Alan Soong — Personal Homepage (Apple Style, Minimalist), including education, skills, research, and contact info." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <meta name="description" content="Alan Soong — personal homepage, including education, skills, research, awards, and contact information." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-lite-webfont@1.1.0/style.css" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
-
 <body>
   <div class="bg" aria-hidden="true"></div>
   <div class="progress" id="progress" aria-hidden="true"></div>
 
-  <header class="topbar container">
-    <div class="topbar-inner">
-      <a class="brand" href="#top">
-        <span class="brand-mark">AS</span>
-        <span>Alan Soong</span>
-      </a>
-      <nav class="nav" aria-label="Main Navigation">
+  <div class="site-shell">
+    <header class="masthead card">
+      <a class="brand" href="#top">Alan Soong</a>
+      <nav class="mastnav" aria-label="Main navigation">
         <a href="#about" class="navlink">About</a>
-        <a href="#education" class="navlink">Edu</a>
-        <a href="#skills" class="navlink">Skills</a>
+        <a href="#news" class="navlink">News</a>
         <a href="#research" class="navlink">Research</a>
         <a href="#awards" class="navlink">Awards</a>
+        <a href="#education" class="navlink">Education</a>
+        <a href="#skills" class="navlink">Skills</a>
         <a href="#contact" class="navlink">Contact</a>
       </nav>
-      <div class="actions">
-        <button class="iconbtn" id="themeToggle" type="button" aria-label="Toggle dark mode" title="Toggle theme">
+      <div class="mast-actions">
+        <button class="iconbtn" id="themeToggle" type="button" aria-label="Toggle theme" title="Toggle theme">
           <span aria-hidden="true">☾</span>
         </button>
-        <a class="iconbtn" href="index.html" aria-label="Switch to Chinese" title="中文版本">
-          <span aria-hidden="true" style="font-family: 'LXGW WenKai Lite', sans-serif; font-weight: 700; font-size: 0.8rem;">中</span>
-        </a>
-        <a class="iconbtn" href="https://github.com/Alan-Soong" target="_blank" rel="noopener" aria-label="GitHub">
-          <span aria-hidden="true">⌂</span>
-        </a>
-        <a class="iconbtn" href="mailto:2311095@mail.nankai.edu.cn" aria-label="Email">
-          <span aria-hidden="true">✉</span>
+        <a class="iconbtn" href="index.html" aria-label="切换到中文" title="中文版本">
+          <span class="lang-label" aria-hidden="true">中</span>
         </a>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main id="top" class="container">
-    <section class="hero" aria-label="Intro">
-      <div class="card hero-main reveal">
-        <div class="kicker"><span class="dot" aria-hidden="true"></span> Nankai University · Computer Science · Class of 2023</div>
-        <h1 class="hero-title">Alan Soong</h1>
-        <p class="hero-sub">
-          Undergraduate in Computer Science and Technology at Nankai University, with a minor in Data Science and Big Data Technology.
-          Passionate about research, actively exploring AI frontiers, and hoping to contribute to the research community.
-        </p>
-        <div class="chips" aria-label="Interests">
-          <span class="chip">👁️ Computer Vision</span>
-          <span class="chip">⛏️ Data Mining & ML</span>
-          <span class="chip">🧮 LLM Quantization</span>
-          <span class="chip">🧩 AI Infra</span>
-        </div>
-        <div class="hero-focus" aria-label="Research Focus">
-          <h3>Research Focus</h3>
-          <div class="focus-grid">
-            <div class="focus-item"><strong>LLM Quantization</strong><span>Low-bit methods and faster inference</span></div>
-            <div class="focus-item"><strong>Vision Understanding</strong><span>Medical segmentation and robustness</span></div>
-            <div class="focus-item"><strong>AI Infra</strong><span>Deployment workflows and edge delivery</span></div>
-          </div>
-        </div>
-        <div class="hero-actions">
-          <a class="btn primary" href="#research">Research</a>
-          <a class="btn" href="#contact">Contact</a>
-          <a class="btn" href="https://github.com/Alan-Soong" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </div>
-
-      <div class="hero-side">
-        <div class="card profile reveal">
-          <div class="avatar" aria-label="Profile Photo" data-status="online">
+    <div class="layout" id="top">
+      <aside class="sidebar">
+        <div class="sidebar-panel card reveal">
+          <div class="author-photo">
             <img class="avatar-img" src="css/photo.png" alt="Alan Soong profile photo" />
-            <div class="online"><span class="dot" aria-hidden="true"></span><span class="status-online">Online</span><span class="status-offline">Offline</span></div>
           </div>
-          <div class="pill">
-            <div><strong>Position Tag</strong>: AI Research & Engineering</div>
-            <small>"Willing to sit on the 'cold bench', diving deep."</small>
-          </div>
-          <div class="stats" aria-label="Key Stats">
-            <div class="stat"><b>Research-Driven</b><span>Learning Style</span></div>
-            <div class="stat"><b>Cross-Disciplinary</b><span>Academic Profile</span></div>
-            <div class="stat"><b>Team-Ready</b><span>Collaboration</span></div>
-          </div>
-        </div>
+          <h1 class="author-name">Alan Soong</h1>
+          <p class="author-name-sub">宋卓伦</p>
+          <p class="author-bio">Undergraduate student in Computer Science at Nankai University, minoring in Data Science and Big Data Technology, with strong interest in both AI research and engineering practice.</p>
 
-        <div class="card reveal">
-          <div class="h2 compact">
-            <h2 class="small">Slogan</h2>
-            <p>Lightweight · Restrained · Reproducible</p>
+          <div class="author-meta">
+            <p>Nankai University</p>
+            <p>Computer Science · Class of 2023</p>
+            <p>Tianjin, China</p>
           </div>
-          <div class="list">
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p>Interested in <strong>Computer Vision, Data Mining and Machine Learning, LLM Quantization, AI Infra</strong>, with some research experience.</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p>Proactive, excellent teamwork skills; good at communication, quickly adapts to new environments; calm and patient, willing to sit on the "cold bench", deeply focused on research, passionate about solving difficult problems and pursuing innovation.</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p>Focused on model compression and deployment efficiency, and actively exploring practical LLM quantization for edge inference acceleration.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="about" class="block" aria-label="About Me">
-      <div class="h2 reveal">
-        <h2>About Me</h2>
-        <p>From resume main.tex</p>
-      </div>
-      <div class="grid two">
-        <div class="card reveal">
-          <div class="list">
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>Interest Areas</strong>: Interested in <strong>Computer Vision, Data Mining and Machine Learning, LLM Quantization, AI Infra</strong>, with some research experience.</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>Personality Traits</strong>: Proactive, excellent teamwork skills; good at communication, quickly adapts to new environments; calm and patient, willing to sit on the "cold bench", deeply focused on research, passionate about solving difficult problems and pursuing innovation.</p></div>
+          <div class="chips" aria-label="Research interests">
+            <span class="chip">Computer Vision</span>
+            <span class="chip">Data Mining &amp; ML</span>
+            <span class="chip">LLM Quantization</span>
+            <span class="chip">AI Infra</span>
           </div>
-        </div>
-        <div class="card reveal">
-          <div class="list">
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>Self-Introduction</strong>: I am an ENFJ, with extraverted leadership and a deep concern for "group goals", as well as a heart willing to shine in the collective. This is what I possess and will continue to develop in the future, hoping to contribute my strength in the field of research. Additionally, I have received the 2023-2024 and 2024-2025 Social Public Welfare Scholarships, and actively participate in volunteer services and social practices.</p></div>
-          </div>
-          <div class="mt12">
-            <span class="notice">✨ 2023-2024, 2024-2025 Social Public Welfare Scholarships</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <section id="education" class="block" aria-label="Education">
-      <div class="h2 reveal">
-        <h2>Education</h2>
-        <p>Timeline & Key Info</p>
-      </div>
-      <div class="timeline">
-        <div class="entry reveal">
-          <div class="entry-head">
-            <h3>Computer Science and Technology · Nankai University · Bachelor's Degree</h3>
-            <div class="time">2023--2027</div>
+          <ul class="author-links">
+            <li><a href="mailto:2311095@mail.nankai.edu.cn"><span class="link-label">Email</span><span class="link-value">2311095@mail.nankai.edu.cn</span></a></li>
+            <li><a href="https://github.com/Alan-Soong" target="_blank" rel="noopener"><span class="link-label">GitHub</span><span class="link-value">Alan-Soong</span></a></li>
+            <li><a href="https://alan-soong.github.io/employment/" target="_blank" rel="noopener"><span class="link-label">Blog</span><span class="link-value">alan-soong.github.io/employment</span></a></li>
+            <li><a href="https://www.xiaohongshu.com/user/profile/65e47526000000000500ace5" target="_blank" rel="noopener"><span class="link-label">Xiaohongshu</span><span class="link-value">@Alan-Soong</span></a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <section id="about" class="page-section reveal">
+          <h2>About Me</h2>
+          <p>Undergraduate in Computer Science and Technology at Nankai University, with a minor in Data Science and Big Data Technology. Passionate about research, actively exploring AI frontiers, and hoping to contribute to the research community.</p>
+          <p>I am particularly interested in <strong>Computer Vision, Data Mining and Machine Learning, LLM Quantization, and AI Infra</strong>, and have been steadily building research and project experience in these directions. I am proactive, collaborative, adaptable to new environments, and willing to stay patient and focused on long-term work.</p>
+          <p>I am an ENFJ, driven by action and a strong sense of shared goals. I enjoy contributing within a team and taking responsibility where needed. In addition, I received the 2023-2024 and 2024-2025 Social Public Welfare Scholarships, and actively participated in volunteer service and social practice.</p>
+          <div class="inline-notes">
+            <span class="notice">2023-2024, 2024-2025 Social Public Welfare Scholarships</span>
           </div>
-          <div class="work">
-            <div class="list">
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Core Courses: Advanced Mathematics, Linear Algebra, Data Structures, Computer Architecture, Compiler Principles</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Academic Performance: Strong and consistent outcomes across core CS coursework</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Discipline Foundation: Solid training in mathematics and systems-oriented computing</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>English Proficiency: Able to read academic papers and collaborate in technical contexts</p></div>
+        </section>
+
+        <section id="news" class="page-section reveal">
+          <h2>News</h2>
+          <ul class="news-list">
+            <li><span class="news-date">2025.09</span><span>Joined the research group of Associate Professor Fu Sheng at Nankai University to help compile lecture notes for Data Mining and Machine Learning.</span></li>
+            <li><span class="news-date">2025.07</span><span>Won Third Prize in the semi-finals of the National College Students Medical Innovation Competition and the Belt and Road International Competition interdisciplinary track.</span></li>
+            <li><span class="news-date">2025.06</span><span>Won First Prize in the Xdpu Intelligent Computing special competition at Nankai University, and the HarmonyOS local cuisine guide app project was recognized as an Excellent Team.</span></li>
+            <li><span class="news-date">2025.03</span><span>Continued work on DUPA-net for pneumonia medical image segmentation and participated in the related paper submission process.</span></li>
+          </ul>
+        </section>
+
+        <section id="research" class="page-section reveal">
+          <h2>Research Experience</h2>
+
+          <article class="paper-card">
+            <div class="paper-badge">2025.03 - 2026.04</div>
+            <div class="paper-body">
+              <h3>DUPA-net: A Pneumonia Medical Image Segmentation Network with Dense Skip Connections and Variational Inference</h3>
+              <p>A university-level key project under Professor Dai Yu at the School of Artificial Intelligence, Nankai University, focusing on pulmonary medical image segmentation.</p>
+              <ul class="detail-list">
+                <li>Served as a core contributor to the improved cDAL model based on diffusion models and participated in the code implementation that improved model performance.</li>
+                <li>Participated in the National College Student Medical Innovation Competition and the Belt and Road International Competition interdisciplinary track.</li>
+                <li>A paper is currently under submission to CCC2026 (China Control Conference), as a non-first author.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-badge">2025.06 - 2025.07</div>
+            <div class="paper-body">
+              <h3>Internship Project: Local Cuisine Guide App Based on the HarmonyOS Ecosystem</h3>
+              <p>Led a team project focused on local cuisine search and personalized recommendation. The team was recognized as an Excellent Team.</p>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-badge">2025.03 - 2025.12</div>
+            <div class="paper-body">
+              <h3>Chip Interface Design Program Project</h3>
+              <p>Developed a remote QT application for a laboratory at a research institute in Beijing, targeting functionality related to EDA chip layout and currently exploring practical deployment.</p>
+            </div>
+          </article>
+
+          <article class="paper-card">
+            <div class="paper-badge">2025.09 - Present</div>
+            <div class="paper-body">
+              <h3>Compilation and Proofreading of DMML Lecture Notes</h3>
+              <ul class="detail-list">
+                <li>Joined the working group of Associate Professor Fu Sheng at the School of Statistics and Data Science, Nankai University, to compile teaching materials for Data Mining and Machine Learning.</li>
+                <li>Considering future publication and practical use as a comprehensive machine learning book series.</li>
+              </ul>
+            </div>
+          </article>
+
+          <div class="focus-grid">
+            <div class="focus-card card">
+              <strong>LLM Quantization</strong>
+              <span>Low-bit quantization and inference efficiency optimization</span>
+            </div>
+            <div class="focus-card card">
+              <strong>Vision Understanding</strong>
+              <span>Medical segmentation and robustness improvement</span>
+            </div>
+            <div class="focus-card card">
+              <strong>AI Infra</strong>
+              <span>Deployment workflows and edge-side delivery</span>
             </div>
           </div>
-        </div>
-        <div class="entry reveal">
-          <div class="entry-head">
-            <h3>Data Science and Big Data Technology · Nankai University · Minor</h3>
-            <div class="time">2024--2027</div>
-          </div>
-          <div class="work">
-            <div class="list">
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Core Courses: Probability and Statistics, Data Mining and Machine Learning, Statistical Analysis Software, Practical Applications in Data Science</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section id="skills" class="block" aria-label="Skills">
-      <div class="h2 reveal">
-        <h2>Professional Skills</h2>
-        <p>Grouped by Frontend / Backend / Tools</p>
-      </div>
+        <section id="awards" class="page-section reveal">
+          <h2>Honors and Awards</h2>
+          <ul class="detail-list compact">
+            <li><strong>2024.12</strong> Second Prize in the 16th National University Mathematics Competition.</li>
+            <li><strong>2025.06</strong> First Prize in the Xdpu Intelligent Computing Special Competition, Nankai University station.</li>
+            <li><strong>2025.07</strong> Third Prize in the National College Students Medical Innovation Competition and Belt and Road International Competition interdisciplinary track semi-finals.</li>
+            <li><strong>2025.09</strong> Third Prize in the 8th CCF-TCARCH Computer Architecture Challenge.</li>
+            <li><strong>2025.11</strong> Second Prize in the National College Student Mathematical Modeling Competition.</li>
+            <li><strong>2025.12</strong> Third Prize in the Asia-Pacific Mathematical Modeling Competition.</li>
+          </ul>
+        </section>
 
-      <div class="grid three skillcols">
-        <div class="card reveal">
-          <h3>Frontend</h3>
-          <div class="notice">🚧 Under Construction, Stay Tuned</div>
-        </div>
-        <div class="card reveal">
-          <h3>Backend / Data Processing</h3>
-          <div class="tags" aria-label="Backend Skills">
-            <span class="tag">🐍 Python</span>
-            <span class="tag">🧪 Pandas</span>
-            <span class="tag">🧠 Sklearn</span>
-            <span class="tag">🗄️ SQL</span>
-            <span class="tag">📦 C++</span>
-            <span class="tag">🧩 Scala</span>
-          </div>
-        </div>
-        <div class="card reveal">
-          <h3>Tools / Documentation</h3>
-          <div class="tags" aria-label="Tools Tags">
-            <span class="tag">🔧 Git</span>
-            <span class="tag">🧱 Overleaf</span>
-            <span class="tag">📊 Tableau</span>
-            <span class="tag">🧾 LaTeX</span>
-          </div>
-        </div>
-      </div>
-    </section>
+        <section id="education" class="page-section reveal">
+          <h2>Education</h2>
+          <div class="edu-list">
+            <article class="edu-item">
+              <div class="edu-top">
+                <h3>Nankai University · B.Eng. in Computer Science and Technology</h3>
+                <span>2023 - 2027</span>
+              </div>
+              <ul class="detail-list">
+                <li>Core courses: Advanced Mathematics, Linear Algebra, Data Structures, Computer Architecture, and Compiler Principles.</li>
+                <li>Academic performance: steady and solid progress across major coursework.</li>
+                <li>Foundation: systematic training in mathematics and computer systems.</li>
+                <li>English proficiency: able to read academic literature and communicate in technical settings.</li>
+              </ul>
+            </article>
 
-    <section id="research" class="block" aria-label="Research">
-      <div class="h2 reveal">
-        <h2>Research Experience</h2>
-        <p>As of Mar 2026</p>
-      </div>
+            <article class="edu-item">
+              <div class="edu-top">
+                <h3>Nankai University · Minor in Data Science and Big Data Technology</h3>
+                <span>2024 - 2027</span>
+              </div>
+              <ul class="detail-list">
+                <li>Core courses: Probability, Mathematical Statistics, Data Mining and Machine Learning, Statistical and Big Data Analysis Software, and Practical Data Science.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
-      <div class="timeline">
-        <div class="entry reveal">
-          <div class="entry-head">
-            <h3>DUPA-Net: A Pneumonia Medical Image Segmentation Network Based on Conditional Diffusion Models</h3>
-            <div class="time">2025.03--2026.04</div>
+        <section id="skills" class="page-section reveal">
+          <h2>Skills</h2>
+          <div class="skill-groups">
+            <article class="skill-card card">
+              <h3>Frontend</h3>
+              <p class="muted">Under construction. More updates coming soon.</p>
+            </article>
+            <article class="skill-card card">
+              <h3>Backend / Data Processing</h3>
+              <div class="tags" aria-label="Backend skill tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Sklearn</span>
+                <span class="tag">SQL</span>
+                <span class="tag">C++</span>
+                <span class="tag">Scala</span>
+              </div>
+            </article>
+            <article class="skill-card card">
+              <h3>Tooling / Documentation</h3>
+              <div class="tags" aria-label="Tool tags">
+                <span class="tag">Git</span>
+                <span class="tag">Overleaf</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">LaTeX</span>
+              </div>
+            </article>
           </div>
-          <div class="work">
-            <div class="list">
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>As a core participant, I contributed to the code implementation of the improved cDAL model based on diffusion models, resulting in enhanced model performance</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Guided by Professor Dai Yu from the School of Artificial Intelligence, Nankai University, this project is a university-level key project focusing on pulmonary medical image segmentation</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Participated in the National College Student Medical Innovation Competition and the "Belt and Road" International Competition in the interdisciplinary track</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Currently submitting a paper to CCC2026 (China Control Conference), not the first author</p></div>
-            </div>
-          </div>
-        </div>
+        </section>
 
-        <div class="entry reveal">
-          <div class="entry-head">
-            <h3>Internship Project: Local Cuisine Guide APP Based on HarmonyOS Ecosystem</h3>
-            <div class="time">2025.06--2025.07</div>
-          </div>
-          <div class="work">
-            <div class="list">
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>As a team leader, I focused on local cuisine search and personalized recommendation. The project team was awarded the "Excellent Team" title.</p></div>
-            </div>
-          </div>
-        </div>
+        <section id="contact" class="page-section reveal">
+          <h2>Contact</h2>
+          <ul class="contact-list">
+            <li><strong>Email:</strong> <a href="mailto:2311095@mail.nankai.edu.cn">2311095@mail.nankai.edu.cn</a></li>
+            <li><strong>Tel:</strong> <a href="tel:18302289029">183 0228 9029</a></li>
+            <li><strong>GitHub:</strong> <a href="https://github.com/Alan-Soong" target="_blank" rel="noopener">github.com/Alan-Soong</a></li>
+            <li><strong>Address:</strong> 38 Tongyan Road, Jinnan District, Tianjin, China</li>
+            <li><strong>Xiaohongshu:</strong> <a href="https://www.xiaohongshu.com/user/profile/65e47526000000000500ace5" target="_blank" rel="noopener">@Alan-Soong, click to follow</a></li>
+            <li><strong>Collaboration:</strong> Welcome to reach out by email.</li>
+          </ul>
+        </section>
 
-        <div class="entry reveal">
-          <div class="entry-head">
-            <h3>Chip Interface Design Program Project</h3>
-            <div class="time">2025.03--2025.12</div>
-          </div>
-          <div class="work">
-            <div class="list">
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Developed a QT application remotely for a laboratory at a Beijing research institute, implementing functionality related to EDA chip layout; currently in the process of being deployed</p></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="entry reveal">
-          <div class="entry-head">
-            <h3>Compilation and Proofreading of DMML Lecture Notes</h3>
-            <div class="time">2025.09--</div>
-          </div>
-          <div class="work">
-            <div class="list">
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Joined the research group of Associate Professor Fu Sheng from the School of Statistics and Data Science at Nankai University to participate in the compilation of lecture notes for data mining and machine learning courses</p></div>
-              <div class="li"><span class="bullet" aria-hidden="true"></span><p>Considering subsequent implementation, forming a comprehensive series of books on machine learning</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="awards" class="block" aria-label="Awards">
-      <div class="h2 reveal">
-        <h2>Awards</h2>
-        <p>As of Mar 2026</p>
-      </div>
-
-      <div class="grid two">
-        <div class="card reveal">
-          <div class="list">
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2024.12</strong> Second Prize in the 16th National University Mathematical Contest in Colleges and Universities</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.06</strong> First Prize in the Internal Special Competition of Xinda Intelligence Computing — Nankai University Station</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.07</strong> Third Prize in the National College Students Medical Innovation Competition and the "Belt and Road" International Competition Cross-Disciplinary Track Semi-Finals</p></div>
-          </div>
-        </div>
-        <div class="card reveal">
-          <div class="list">
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.09</strong> Third Prize in the 8th CCF-TCARCH Computer Architecture Contest</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.11</strong> Second Prize in the National College Student Mathematical Modeling Contest</p></div>
-            <div class="li"><span class="bullet" aria-hidden="true"></span><p><strong>2025.12</strong> Third Prize in the Asia-Pacific College Student Mathematical Modeling Contest</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact" class="block" aria-label="Contact">
-      <div class="h2 reveal">
-        <h2>Contact</h2>
-        <p>Feel free to reach out</p>
-      </div>
-
-      <div class="grid four contacts">
-        <a class="card reveal" href="mailto:2311095@mail.nankai.edu.cn">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">✉</div>
-            <div>
-              <small>Email</small>
-              <div>2311095@mail.nankai.edu.cn</div>
-            </div>
-          </div>
-        </a>
-        <a class="card reveal" href="tel:18302289029">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">☎</div>
-            <div>
-              <small>Tel</small>
-              <div>183 0228 9029</div>
-            </div>
-          </div>
-        </a>
-        <a class="card reveal" href="https://github.com/Alan-Soong" target="_blank" rel="noopener">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">⌂</div>
-            <div>
-              <small>GitHub</small>
-              <div>github.com/Alan-Soong</div>
-            </div>
-          </div>
-        </a>
-        <div class="card reveal">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">⌁</div>
-            <div>
-              <small>Address</small>
-              <div>38 Tongyan Road, Jingnan District, Tianjin</div>
-            </div>
-          </div>
-        </div>
-
-        <a class="card reveal" href="https://www.xiaohongshu.com/user/profile/65e47526000000000500ace5" target="_blank" rel="noopener">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">🍠</div>
-            <div>
-              <small>Xiaohongshu</small>
-              <div>@Alan-Soong，click to follow</div>
-            </div>
-          </div>
-        </a>
-        <a class="card reveal" href="https://alan-soong.github.io/employment/" target="_blank" rel="noopener">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">⌗</div>
-            <div>
-              <small>Blog</small>
-              <div>My Blog</div>
-            </div>
-          </div>
-        </a>
-        <div class="card reveal">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">◎</div>
-            <div>
-              <small>CV</small>
-              <div>🚧 Under construction, please stay tuned</div>
-            </div>
-          </div>
-        </div>
-        <div class="card reveal">
-          <div class="contact">
-            <div class="ic" aria-hidden="true">⌘</div>
-            <div>
-              <small>Collaboration</small>
-              <div>Welcome to send emails for more information! </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">© 2026 Alan Soong (Zhuolun Song) · github.com/Alan-Soong</footer>
-  </main>
+        <footer class="footer">© 2026 Alan Soong (Zhuolun Song) · github.com/Alan-Soong</footer>
+      </main>
+    </div>
+  </div>
 
   <div class="pet" id="pet" aria-hidden="true">
     <div class="pet-inner">
@@ -381,7 +246,7 @@
     </div>
   </div>
 
-  <button class="totop" id="totop" aria-label="Back to top">↑</button>
+  <button class="totop" id="totop" type="button" aria-label="Back to top">↑</button>
 
   <script src="js/main.js" defer></script>
 </body>
